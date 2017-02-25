@@ -25,7 +25,8 @@
 <div class="container starter-template">
     <div class="row">
         <div class="col-md-6 mid">
-            <h1>????</h1>
+            <h1 class="ques">????</h1>
+            <h1 class="ans"></h1>
             <form class="form-inline" id="guessForm">
                 <div class="form-group">
                     <input type="text" id="guessId" class="form-control" name="guess" placeholder="Enter the number" autocomplete="off">
@@ -40,7 +41,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 text-success result"></div>
-                <div class="col-md-6 text-success result2"></div>
+                <div class="col-md-6 result2"></div>
             </div>
         </div>
         <div class="col-md-6 text-left">
@@ -56,7 +57,8 @@
                 <li><span class="glyphicon glyphicon-transfer"></span> Indicates a number is part of the code, but not in the right position.</li>
                 <li><span class="glyphicon glyphicon-repeat"></span> Exists but doesn't consider how many times.</li>
                 <li><span class="glyphicon glyphicon-remove"></span> Indicates a number is not part of the code.</li>
-            </ul>
+            </ul><br>
+            <button class="btn btn-success" id="playAgain" onclick="location.reload()">Play Again</button>
         </div>
     </div>
 </div>

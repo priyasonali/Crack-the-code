@@ -1,6 +1,6 @@
 <?php
 $guessNum = $_REQUEST['guess'];
-$num = [1,1,1,2];
+$num = [1,1,3,4];
 $num1 = implode("",$num);
 $ac=null;
 
@@ -15,26 +15,26 @@ if($num1!=$guessNum) {
             $freq = $freqs[$g];
             $freqUser = $freqsUser[$g];
             if($freq>1 && ($freq > $freqUser)){
-                $ac .= 'repeatq.';
+                $ac .= '<span class="glyphicon glyphicon-repeat text-info"></span>';
             }else if($freq == $freqUser){
                 if($g==$val){
-                    $ac .= 'good.';
+                    $ac .= '<span class="glyphicon glyphicon-ok text-success"></span>';
                 }else{
-                    $ac .= 'notrtpos.';
+                    $ac .= '<span class="glyphicon glyphicon-transfer text-warning"></span>';
                 }
             }else if($freq < $freqUser){
                 if($g==$val){
-                    $ac .= 'good.';
+                    $ac .= '<span class="glyphicon glyphicon-ok text-success"></span>';
                 }else{
-                    $ac .= 'notrtpos.';
+                    $ac .= '<span class="glyphicon glyphicon-transfer text-warning"></span>';
                 }
             }else if($g==$val || ($freq>1 && $g==$val)){
-                $ac .= 'good.';
+                $ac .= '<span class="glyphicon glyphicon-ok text-success"></span>';
             }else{
-                $ac .= 'notrtpos.';
+                $ac .= '<span class="glyphicon glyphicon-transfer text-warning"></span>';
             }
         }else{
-            $ac .= 'nothr.';
+            $ac .= '<span class="glyphicon glyphicon-remove text-danger"></span>';
         }
         if($freq == 1 || $freqUser>$freq){
             $num[$keyAc] = null;

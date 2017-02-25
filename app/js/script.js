@@ -3,6 +3,7 @@
         $('.error').hide();
         var times = 0;
         $('.submitBtn').prop('disabled', true);
+        $('#playAgain').hide();
         $("#guessForm input[name='guess']").on("keyup",function (e) {
             var that = $(this);
             if(!/^\d{4}$/.test(that.val())) {
@@ -19,7 +20,7 @@
             $('.submitBtn').prop('disabled', true);
             var form = $(this);
             times++;
-            if(times<=10){
+            if(times<=3){
                 var formData = form.serialize();
                 $.ajax({
                     'url': './crack/runGuess.php',
@@ -27,10 +28,20 @@
                     'data': formData,
                     'success':function (data) {
                         $(".result").append("<p>"+formData.split('=')[1]+"</p>");
-                        $(".result2").append("<p>"+data+"</p>");
-                        if(data==Correct) {
+                        if(data=="Correct") {
                             $('.submitBtn').prop('disabled', true);
-                            $("input").prop('disabled',true);
+                            $('#guessId').prop('disabled',true);
+                            $('.ans').append(formData.split('=')[1]);
+                            $('.ques').hide();
+                            $('.result2').append("<span class='glyphicon glyphicon-ok text-success'></span>" +
+                                "<span class='glyphicon glyphicon-ok text-success'></span>" +
+                                "<span class='glyphicon glyphicon-ok text-success'></span>" +
+                                "<span class='glyphicon glyphicon-ok text-success'></span>"
+                            );
+                            $('#playAgain').show();
+                        }
+                        else{
+                            $(".result2").append("<p>"+data+"</p>");
                         }
                     },
                     'error':function (data) {
