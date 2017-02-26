@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+session_start();
+$number = rand(1000,9999);
+$_SESSION["number"]=$number;
+?>
 <html>
 <head>
     <title>Crack The Code</title>
@@ -58,7 +63,9 @@
                 <li><span class="glyphicon glyphicon-repeat"></span> Exists but doesn't consider how many times.</li>
                 <li><span class="glyphicon glyphicon-remove"></span> Indicates a number is not part of the code.</li>
             </ul><br>
+            <p class="text-danger fail"></p>
             <button class="btn btn-success" id="playAgain" onclick="location.reload()">Play Again</button>
+
         </div>
     </div>
 </div>

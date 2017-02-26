@@ -1,7 +1,8 @@
 <?php
+session_start();
+$num1 = $_SESSION["number"];
 $guessNum = $_REQUEST['guess'];
-$num = [1,1,3,4];
-$num1 = implode("",$num);
+$num  = array_map('intval', str_split($num1));
 $ac=null;
 
 if($num1!=$guessNum) {
@@ -40,7 +41,7 @@ if($num1!=$guessNum) {
             $num[$keyAc] = null;
         }
     }
-    echo $ac;
+    echo $ac.','.$num1;
 }else{
-    echo 'Correct';
+    echo 'Correct'.','.$num1;
 }

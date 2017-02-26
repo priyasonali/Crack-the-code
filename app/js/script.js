@@ -1,7 +1,7 @@
 (function() {
     $(function() {
         $('.error').hide();
-        var times = 0;
+        var times = 1;
         $('.submitBtn').prop('disabled', true);
         $('#playAgain').hide();
         $("#guessForm input[name='guess']").on("keyup",function (e) {
@@ -20,7 +20,7 @@
             $('.submitBtn').prop('disabled', true);
             var form = $(this);
             times++;
-            if(times<=3){
+            if(times<=5){
                 var formData = form.serialize();
                 $.ajax({
                     'url': './crack/runGuess.php',
@@ -28,7 +28,7 @@
                     'data': formData,
                     'success':function (data) {
                         $(".result").append("<p>"+formData.split('=')[1]+"</p>");
-                        if(data=="Correct") {
+                        if(/Correct/.test(data)==true) {
                             $('.submitBtn').prop('disabled', true);
                             $('#guessId').prop('disabled',true);
                             $('.ans').append(formData.split('=')[1]);
@@ -39,9 +39,15 @@
                                 "<span class='glyphicon glyphicon-ok text-success'></span>"
                             );
                             $('#playAgain').show();
+                        }else if(times==5){
+                            var q = data.split(",")[1];
+                            $(".fail").append("Game over! Correct answer is: "+q);
+                            $('#guessId').prop('disabled',true);
+                            $(".result2").append("<p>"+data.split(",")[0]+"</p>");
+                            $('#playAgain').show();
                         }
                         else{
-                            $(".result2").append("<p>"+data+"</p>");
+                            $(".result2").append("<p>"+data.split(",")[0]+"</p>");
                         }
                     },
                     'error':function (data) {
