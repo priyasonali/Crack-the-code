@@ -1,6 +1,6 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <?php
-session_start();
 $number = rand(1000,9999);
 $_SESSION["number"]=$number;
 ?>
