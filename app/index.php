@@ -57,7 +57,7 @@ $_SESSION["number"]=$number;
                 <li>Each guess must consist of 4 numberic characters.</li>
                 <li>Numbers may be used more than once!</li>
                 <li>You win only if your guess is an exact match.</li>
-                <li>You lose if you fail to guess the code under 5 guesses.</li>
+                <li>You lose if you fail to guess the code under 4 guesses.</li>
                 <li><span class="glyphicon glyphicon-ok"></span> Indicates a number is in the correct position.
                 <li><span class="glyphicon glyphicon-transfer"></span> Indicates a number is part of the code, but not in the right position.</li>
                 <li><span class="glyphicon glyphicon-repeat"></span> Exists but doesn't consider how many times.</li>
