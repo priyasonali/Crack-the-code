@@ -1,0 +1,12 @@
+{
+    "name": "lucentqueen/crack-the-code",
+    "authors": [
+        {
+            "name": "Sonali Priya",
+            "email": "sonalipriya@outlook.com"
+        }
+    ],
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "^130.0"
+    }
+}
